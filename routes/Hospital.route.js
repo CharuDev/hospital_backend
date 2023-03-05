@@ -2,7 +2,7 @@ const express = require("express");
 const { HospitalModel } = require("../model/Hospital.model");
 const HospitalRouter = express.Router();
 
-// get all food  data
+// get all hospital  data 
 HospitalRouter.get("/", async (req, res) => {
   const zone = req.query.zone;
   const q = req.query.q;
@@ -36,6 +36,7 @@ HospitalRouter.get("/:id", async (req, res) => {
     res.send("Something went wrong");
   }
 });
+
 HospitalRouter.post("/add", async (req, res) => {
   try {
     const food = await HospitalModel(req.body);

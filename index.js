@@ -5,6 +5,23 @@ const app = express();
 app.use(express.json());
 app.use("/", HospitalRouter);
 require("dotenv").config();
+
+
+
+// app.use(bodyParser.urlencoded({ extended: true }))
+// app.get("/", function (req, res) {
+//     res.sendFile(__dirname + "/index.html")
+
+// })
+app.post("/", function (req, res) {
+  var weight = Number(req.body.weight);
+  var height = Number(req.body.height);
+  var result = weight / height
+  res.send("the result is " + result)
+});
+
+
+
 app.listen(process.env.port, async () => {
   try {
     await connect;
@@ -13,5 +30,5 @@ app.listen(process.env.port, async () => {
     console.log("something went wrong ");
     console.log(error);
   }
-  console.log("server is running ");
+  console.log("server is running " + process.env.port);
 });
