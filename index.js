@@ -3,12 +3,13 @@ const { connect } = require("./config/db");
 const { HospitalRouter } = require("./routes/Hospital.route");
 const cors=require("cors")
 const app = express();
-app.use(express.json());
-app.use("/", HospitalRouter);
-require("dotenv").config();
 app.use(cors({
   origin:"*"
 }))
+app.use(express.json());
+app.use("/", HospitalRouter);
+require("dotenv").config();
+
 
 
 // app.use(bodyParser.urlencoded({ extended: true }))
